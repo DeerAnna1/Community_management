@@ -44,7 +44,7 @@ Community_management/
 
 ## 在线演示
 
-🌐 **前端访问地址**: [https://您的用户名.github.io/Community_management](https://您的用户名.github.io/Community_management)
+🌐 **前端访问地址**: [https://DeerAnna1.github.io/Community_management](https://DeerAnna1.github.io/Community_management)
 
 ## 本地运行
 
@@ -67,7 +67,7 @@ npm run serve
 
 ### GitHub Pages部署
 1. 前端代码已配置为支持GitHub Pages部署
-2. 访问地址：`https://您的用户名.github.io/Community_management`
+2. 访问地址：`https://DeerAnna1.github.io/Community_management`
 3. 后端需要单独部署到云服务器
 
 ### 后端部署建议
@@ -78,7 +78,6 @@ npm run serve
 ## 开发团队
 
 - 开发者：Deer12345678
-- 邮箱：2523051418@qq.com
 
 ## 许可证
 
