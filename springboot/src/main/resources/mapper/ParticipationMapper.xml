@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ParticipationMapper">
+
+    <sql id="Base_Column_List">
+        id,userr_id,departmentt_id,activityy_id,time
+    </sql>
+    <select id="selectAll" resultType="com.example.entity.Participation">
+        select participation.*,user.name as userName,department.name as departmentName,activity.name as activityName
+        from participation
+        left join user on participation.userr_id = user.id
+        left join department on participation.departmentt_id = department.id
+        left join activity on participation.activityy_id = activity.id
+        <where>
+            <if test="id != null"> and id= #{id}</if>
+            <if test="userId != null"> and userr_id= #{userId}</if>
+            <if test="departmentId != null"> and departmentt_id= #{departmentId}</if>
+            <if test="activityId != null"> and activityy_id= #{activityId}</if>
+            <if test="time != null"> and time= #{time}</if>
+        </where>
+        order by id desc
+    </select>
+
+    <select id="selectById" resultType="com.example.entity.Participation">
+        select
+        <include refid="Base_Column_List" />
+        from participation
+        where id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from participation
+        where id = #{id}
+    </delete>
+
+    <insert id="insert" parameterType="com.example.entity.Participation" useGeneratedKeys="true">
+        insert into participation
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="userId != null">userr_id,</if>
+                <if test="departmentId != null">departmentt_id,</if>
+                <if test="activityId != null">activityy_id,</if>
+                <if test="time != null">time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id},</if>
+                <if test="userId != null">#{userId},</if>
+                <if test="departmentId != null">#{departmentId},</if>
+                <if test="activityId != null">#{activityId},</if>
+                <if test="time != null">#{time},</if>
+        </trim>
+    </insert>
+
+</mapper>
